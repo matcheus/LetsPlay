@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Let"'"sPlay</string>
+
+    <string name="realizar_login">Já é usuário? Realize seu login!</string>
+    <string name="realizar_cadastro">Não é usuário ainda?</string>
+    <string name="bttn_entrar">Entrar</string>
+    <string name="bttn_cadastrar">Cadastrar</string>
+    <string name="bttn_lembrar">Lembrar-me</string>
+    <string name="title_activity_cadastro">Cadastro</string>
+
+    <string name="activity_carteira_classificacao">Sua classificação: </string>
+    <string name="title_activity_carteira">Carteira</string>
+
+    <string name="cadastro_nome_erro">O campo "Nome" não pode ser vazio</string>
+    <string name="cadastro_email_erro">O campo "Email" não pode ser vazio</string>
+    <string name="cadastro_senha_erro">O campo "Senha" precisa ter no mínimo 6 caracteres</string>
+    <string name="atualizar_cadastro_senha_erro">Senha antiga informada não confere.</string>
+    <string name="cadastro_nascimento_erro">Por favor insira uma data de nascimento</string>
+    <string name="cadastro_erro_geral">Existem campos inválidos</string>
+    <string name="cadastro_usuario_persistido">Usuário foi persistido no BD com sucesso!</string>
+    <string name="cadastro_usuario_persistido_erro">Erro ao persistido usuário no BD!</string>
+    <string name="erro_alterar_senha">Erro ao alterar a senha.</string>
+    <string name="senha_alterada_sucesso">Senha alterada com sucesso.</string>
+    <string name="email_alterado_sucesso">Email alterada com sucesso.</string>
+
+    <string name="senha_dica">Senha</string>
+    <string name="realizando_login">Verificando informações do Login. Por favor aguarde</string>
+    <string name="realizando_cadastro">Realizando cadastro. Por favor aguarde</string>
+    <string name="email_dica">Email</string>
+    <string name="sign_up_button_label">Sign Up</string>
+    <string name="signup_error_message">Por favor confira se você preencheu todos os campos!</string>
+    <string name="signup_error_password_small">O campo senha precisa ter no mínimo 6 caracteres!</string>
+    <string name="signup_error_title">Erro!</string>
+    <string name="signup_success">Conta conectada com sucesso.</string>
+    <string name="login_error_message">Por favor confira se você preencheu os campos de email e senha!</string>
+    <string name="login_error_message_return">Login ou senha inválido.</string>
+    <string name="login_error_title">Erro!</string>
+    <string name="login_button_label">Login</string>
+    <string name="sign_up_text">Sign Up!</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="general_error">Não foi possível realizar o LogIn.</string>
+    <string name="user_not_found">Não existe um usuário armazenado em modo Offline.</string>
+    <string name="user_offline">Atenção: Modo offline ativado!</string>
+    <string name="fechar_app">Pressione o Botão Voltar novamente para fechar o Aplicativo.</string>
+    <string name="not_syncronized">Dados ainda não foram sincronizados. Tente novamente em breve.</string>
+    <string name="atualizando_cadastro">Atualizando cadastro. Por favor aguarde</string>
+
+
+    <string name="perfil">Perfil</string>
+    <string name="log_out">Logout</string>
+    <string name="notificacoes">Notificações</string>
+    <string name="atualizar_cadastro">Atualize os dados do seu cadastro:</string>
+    <string name="bttn_cancelar">Cancelar</string>
+    <string name="bttn_concluir">Concluir</string>
+    <string name="bttn_voltar">Voltar</string>
+    <string name="doses_card">Doses:</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

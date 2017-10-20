@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/perfilJogos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Perfil dos Jogos" />
+        <item
+            android:id="@+id/comunidade"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Comunidade" />
+        <item
+            android:id="@+id/amigos"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Amigos" />
+        <item
+            android:id="@+id/conversas"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Conversas" />
+    </group>
+
+    <item android:title="Ferramentas">
+        <menu>
+            <item
+                android:id="@+id/config"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Configurações" />
+            <item
+                android:id="@+id/sobre"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Sobre" />
+        </menu>
+    </item>
+
+</menu>
