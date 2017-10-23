@@ -4,32 +4,40 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/perfilJogos"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/google_controller"
             android:title="Perfil dos Jogos" />
         <item
             android:id="@+id/comunidade"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/earth"
             android:title="Comunidade" />
         <item
             android:id="@+id/amigos"
-            android:icon="@drawable/ic_menu_share"
+            android:icon="@drawable/account_multiple"
             android:title="Amigos" />
         <item
             android:id="@+id/conversas"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/wechat"
             android:title="Conversas" />
     </group>
 
     <item android:title="Ferramentas">
         <menu>
             <item
+                android:id="@+id/conta"
+                android:icon="@drawable/account"
+                android:title="Conta" />
+            <item
                 android:id="@+id/config"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/settings"
                 android:title="Configurações" />
             <item
                 android:id="@+id/sobre"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/information_variant"
                 android:title="Sobre" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:title="Sair" />
         </menu>
     </item>
 

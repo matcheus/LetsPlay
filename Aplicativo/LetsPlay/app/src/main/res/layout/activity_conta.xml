@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xpmets.letsplay.View.Conta">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="60dp">
+
+        <LinearLayout
+            android:id="@+id/layl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                android:id="@+id/appBarLayout">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary" />
+
+            </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/logo" />
+
+                <TextView
+                    style="@style/ContaTitulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome" />
+
+                <TextView
+                    android:id="@+id/text_nome_conta"
+                    style="@style/ContaInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#9E9E9E" />
+
+                <TextView
+                    style="@style/ContaTitulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usuário" />
+
+                <TextView
+                    android:id="@+id/text_usuario_conta"
+                    style="@style/ContaInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#9E9E9E" />
+
+                <TextView
+                    style="@style/ContaTitulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail" />
+
+                <TextView
+                    android:id="@+id/text_email_conta"
+                    style="@style/ContaInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#9E9E9E" />
+
+                <TextView
+                    style="@style/ContaTitulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data de nascimento" />
+
+                <TextView
+                    android:id="@+id/text_data_conta"
+                    style="@style/ContaInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#9E9E9E" />
+
+                <TextView
+                    style="@style/ContaTitulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gênero" />
+
+                <TextView
+                    android:id="@+id/text_genero_conta"
+                    style="@style/ContaInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#9E9E9E" />
+
+                <TextView
+                    style="@style/ContaTitulos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sobre mim" />
+
+                <TextView
+                    android:id="@+id/text_sobre_conta"
+                    style="@style/ContaInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Diga algo sobre você" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#9E9E9E" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/conta_editar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layl"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/lead_pencil" />
+    </RelativeLayout>
+</ScrollView>

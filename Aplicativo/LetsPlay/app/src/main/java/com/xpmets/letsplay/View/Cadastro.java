@@ -35,6 +35,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
     static boolean isUpdating;
     final Calendar c = Calendar.getInstance();
     protected EditText nomeEditText;
+    protected EditText usuarioEditText;
     protected EditText passwordEditText;
     protected EditText emailEditText;
     protected Spinner spinner;
@@ -83,6 +84,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
         showDialog();
 
         nomeEditText = (EditText) findViewById(R.id.edit_nome_cadastro);
+        usuarioEditText = (EditText) findViewById(R.id.edit_usuario_cadastro);
 
         Button botaoVoltar = (Button) findViewById(R.id.bttnVoltar_cadastro);
         botaoVoltar.setOnClickListener(Cadastro.this);
@@ -153,7 +155,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Usuario usuario = new Usuario(nomeEditText.getText().toString(),
+                                        Usuario usuario = new Usuario(nomeEditText.getText().toString(), usuarioEditText.getText().toString(),
                                                 emailEditText.getText().toString().trim(), spinner.getSelectedItem().toString(),
                                                 dia, mes, ano);
 

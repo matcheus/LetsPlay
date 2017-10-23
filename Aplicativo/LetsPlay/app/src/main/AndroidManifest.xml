@@ -32,6 +32,11 @@
             android:name=".View.Cadastro"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name=".View.Conta"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

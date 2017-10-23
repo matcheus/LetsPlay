@@ -3,19 +3,18 @@ package com.xpmets.letsplay.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.CardView;
-import android.view.View;
-import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,9 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.xpmets.letsplay.DAO.UsuarioDAO;
 import com.xpmets.letsplay.Model.Usuario;
 import com.xpmets.letsplay.R;
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     private String mUserId = mFirebaseUser.getUid();
     static private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     static private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference refUsuario = mDatabase.child("users").child(mUserId).child("cadastro");
+    private FragmentManager fm = getSupportFragmentManager();
+    private long lastBackPressTime = 0;
+    private Toast toast;
+    private static Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +49,20 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
             }
-        });
+        };
 
-        final CardView button = (CardView) findViewById(R.id.card_view);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), JogoPerfilDetalhado.class);
-                startActivity(intent);
-            }
-        });
+
+        if(savedInstanceState == null){
+            JogosPerfis jogosPerfis = new JogosPerfis();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.add(R.id.frameFragment, jogosPerfis, "jogosPerfis");
+            fragmentTransaction.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,13 +72,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-            }
-        };
+        navigationView.getMenu().getItem(0).setChecked(true);
     }
 
     @Override
@@ -84,7 +80,14 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
+            toast = Toast.makeText(this, R.string.fechar_app, Toast.LENGTH_LONG);
+            toast.show();
+            this.lastBackPressTime = System.currentTimeMillis();
         } else {
+            if (toast != null) {
+                toast.cancel();
+            }
             super.onBackPressed();
         }
     }
@@ -118,17 +121,30 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.perfilJogos) {
-            // Handle the camera action
+            JogosPerfis jogosPerfis = new JogosPerfis();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.frameFragment, jogosPerfis, "jogosPerfis");
+            //fragmentTransaction.addToBackStack("pilha");
+            fragmentTransaction.commit();
         } else if (id == R.id.comunidade) {
 
         } else if (id == R.id.amigos) {
 
         } else if (id == R.id.conversas) {
 
+        } else if (id == R.id.conta) {
+            Intent intent = new Intent(getBaseContext(), Conta.class);
+            intent.putExtra("usuario", this.usuario);
+            startActivity(intent);
+
         } else if (id == R.id.config) {
 
         } else if (id == R.id.sobre) {
 
+        } else if (id == R.id.logout) {
+            mFirebaseAuth.signOut();
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -138,6 +154,7 @@ public class MainActivity extends AppCompatActivity
 
     //Colocar as informações do usuario na barra lateral
     private void infoBarraLateral(Usuario user){
+        this.usuario = user;
         TextView nomeUsuario = (TextView) findViewById(R.id.textNomeUsuario);
         TextView emailUsuario = (TextView) findViewById(R.id.textEmailUsuario);
         nomeUsuario.setText(user.getNome());

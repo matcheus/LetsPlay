@@ -9,10 +9,6 @@ import android.view.View;
 
 import com.xpmets.letsplay.R;
 
-/**
- * Created by Matheus on 08/10/2017.
- */
-
 public class JogoPerfilDetalhado extends AppCompatActivity {
 
     @Override

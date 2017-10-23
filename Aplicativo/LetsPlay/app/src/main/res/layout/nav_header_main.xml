@@ -17,20 +17,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="Imagem de Perfil" />
 
     <TextView
         android:id="@+id/textNomeUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
-        android:text="Perfil Usuário"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textEmailUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email do Usuário" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
