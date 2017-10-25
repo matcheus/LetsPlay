@@ -46,33 +46,6 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
     private FirebaseAuth mFirebaseAuth;
     private MaterialDialog dialog;
 
-    private DatePickerDialog.OnDateSetListener dPickerListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            checkNascimento = true;
-            ano = year;
-            mes = month + 1;
-            dia = dayOfMonth;
-
-            diaTextView = (TextView) findViewById(R.id.txtDia_cadastro);
-            diaTextView.setText(" " + String.valueOf(dia));
-
-            mesTextView = (TextView) findViewById(R.id.txtMes_cadastro);
-            mesTextView.setText("/" + String.valueOf(mes));
-
-            anoTextView = (TextView) findViewById(R.id.txtAno_cadastro);
-            anoTextView.setText("/" + String.valueOf(ano));
-        }
-    };
-
-    public static void setIsUpdating(boolean isUpdating) {
-        Cadastro.isUpdating = isUpdating;
-    }
-
-    public static Boolean getCheckNascimento() {
-        return checkNascimento;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,7 +99,7 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void configuraSpinner(Spinner spinner) {
-        String[] sexoStr = new String[]{"Masculino", "Feminino", "Outro"};
+        String[] sexoStr = new String[]{"Masculino", "Feminino"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sexoStr);
 
@@ -178,5 +151,32 @@ public class Cadastro extends AppCompatActivity implements View.OnClickListener 
                     Validador.mostrarNotfCadastro(findViewById(android.R.id.content), validador);
                 }
         }
+    }
+
+    private DatePickerDialog.OnDateSetListener dPickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            checkNascimento = true;
+            ano = year;
+            mes = month + 1;
+            dia = dayOfMonth;
+
+            diaTextView = (TextView) findViewById(R.id.txtDia_cadastro);
+            diaTextView.setText(" " + String.valueOf(dia));
+
+            mesTextView = (TextView) findViewById(R.id.txtMes_cadastro);
+            mesTextView.setText("/" + String.valueOf(mes));
+
+            anoTextView = (TextView) findViewById(R.id.txtAno_cadastro);
+            anoTextView.setText("/" + String.valueOf(ano));
+        }
+    };
+
+    public static void setIsUpdating(boolean isUpdating) {
+        Cadastro.isUpdating = isUpdating;
+    }
+
+    public static Boolean getCheckNascimento() {
+        return checkNascimento;
     }
 }

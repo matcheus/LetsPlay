@@ -35,6 +35,14 @@ public class UsuarioDAO extends Thread {
         mDatabase.keepSynced(true);
     }
 
+    public static void atualizarUsuario(Usuario usuario){
+        //Realizando a persistencia offline
+        DatabaseReference referencia = FirebaseDatabase.getInstance().getReference("cadastro");
+        referencia.keepSynced(true);
+        mDatabase.child("users").child(mUserId).child("cadastro").child(usuario.getId()).setValue(usuario);
+        mDatabase.keepSynced(true);
+    }
+
     public static Usuario getUserById(FirebaseAuth.AuthStateListener mAuthListener) {
         mFirebaseAuth.addAuthStateListener(mAuthListener);
         ref.addValueEventListener(new ValueEventListener() {

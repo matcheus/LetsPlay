@@ -1,38 +1,50 @@
 package com.xpmets.letsplay.View;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.xpmets.letsplay.Controller.DataMacara;
+import com.xpmets.letsplay.DAO.UsuarioDAO;
 import com.xpmets.letsplay.Model.Usuario;
 import com.xpmets.letsplay.R;
 
+import java.util.Calendar;
 
-public class EditarCadastro extends AppCompatActivity {
 
-    Usuario usuario;
+public class EditarCadastro extends AppCompatActivity implements View.OnClickListener {
+
+    static final int DialogId = 0;
+    private Usuario usuario;
     static boolean isUpdating;
-    private FirebaseUser user;
-    private String nome, emailUser, senhaAntiga, senhaNova;
-    EditText oldPassEdit, newPassEdit;
+    private Boolean checkNascimento = false;
+    protected Spinner spinner;
     private MaterialDialog dialog;
-    boolean flagEmail, flagSenha;
-    EditText emailEdit, nomeEdt;
+    final Calendar c = Calendar.getInstance();
+    int ano = c.get(Calendar.YEAR);
+    int mes = c.get(Calendar.MONTH);
+    int dia = c.get(Calendar.DAY_OF_MONTH);
+    EditText usuarioEdit, nomeEdit, sobreMimEdit;
+    TextView dataTextView;
+    private FirebaseAuth mFirebaseAuth;
+    FirebaseUser user;
     String result = "Usuário atualizado com sucesso.";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,138 +52,131 @@ public class EditarCadastro extends AppCompatActivity {
         setContentView(R.layout.activity_editar_cadastro);
 
         Intent intent = getIntent();
-
         usuario = (Usuario) intent.getSerializableExtra("usuario");
 
-        nome = usuario.getNome();
-        nomeEdt = (EditText) findViewById(R.id.edit_nome_editar_cadastro);
-        nomeEdt.setText(nome);
+        spinner = (Spinner) findViewById(R.id.sexo_cadastro);
+        configuraSpinner(spinner);
+        showDialog();
 
-        emailUser = usuario.getEmail();
-        emailEdit = (EditText) findViewById(R.id.edit_email_editar_cadastro);
-        emailEdit.setText(emailUser);
+        preencherInfo();
 
-        oldPassEdit = (EditText) findViewById(R.id.edit_senha_editar_cadastro_antiga);
-        newPassEdit = (EditText) findViewById(R.id.edit_senha_editar_cadastro_nova);
+        Button botaoCancelar = (Button) findViewById(R.id.bttnCancelar_editar_cadastro);
+        botaoCancelar.setOnClickListener(EditarCadastro.this);
+        Button botaoSalvar = (Button) findViewById(R.id.bttnSalvar_editar_cadastro);
+        botaoSalvar.setOnClickListener(EditarCadastro.this);
 
-
-        final Button concluir = (Button) findViewById(R.id.bttnSalvar_editar_cadastro);
-        concluir.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                flagEmail = false;
-                flagSenha = false;
-                boolean flag = concluir();
-                result = "";
-                if (flag) {
-                    Snackbar.make(findViewById(android.R.id.content), result, Snackbar.LENGTH_LONG).show();
-                } else {
-                    result = "";
-
-                    if (flagEmail) {
-                        result = result + "Email: atualizado\n";
-                    } else {
-                        result = result + "Email: não atualizado\n";
-                    }
-                    if (flagSenha) {
-                        result = result + "Senha: atualizado\n";
-                    } else {
-                        result = result + "Senha: não atualizado\n";
-                    }
-//                    Snackbar.make(findViewById(android.R.id.content), result, Snackbar.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        final Button cancelar = (Button) findViewById(R.id.bttnCancelar_editar_cadastro);
-        cancelar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                voltar();
-            }
-        });
+        // Iniciando o FirebaseAuth
+        try {
+            mFirebaseAuth = FirebaseAuth.getInstance();
+            user = Usuario.getFireBaseUser();
+        } catch (Exception e) {
+            mFirebaseAuth = null;
+        }
     }
 
-    private boolean concluir() {
-        senhaAntiga = oldPassEdit.getText().toString();
-        senhaNova = newPassEdit.getText().toString();
-        emailUser = emailEdit.getText().toString();
-//        dialog = new MaterialDialog.Builder(this).content(R.string.atualizando_cadastro).progress(true, 0).show();
-//
-//        dialog.dismiss();
+    private void preencherInfo() {
+        nomeEdit = (EditText) findViewById(R.id.edit_nome_editar_cadastro);
+        sobreMimEdit = (EditText) findViewById(R.id.edit_sobre_mim);
+        usuarioEdit = (EditText) findViewById(R.id.edit_usuario_editar_cadastro);
 
-        updatePassword();
-        updateEmail();
+        nomeEdit.setText(usuario.getNome());
+        usuarioEdit.setText(usuario.getUsuario());
+        sobreMimEdit.setText(usuario.getSobre());
+        DataMacara dataMasc = new DataMacara();
+        String data = dataMasc.dataTransforma(usuario.getDiaNascimento(), usuario.getMesNascimento(),
+                usuario.getAnoNascimento());
+        dataTextView = (TextView) findViewById(R.id.txtData_cadastro);
+        dataTextView.setText(data);
+    }
 
-        if (flagEmail && flagSenha) {
-            return true;
+    private void configuraSpinner(Spinner spinner) {
+        String[] sexoStr = new String[]{"Masculino", "Feminino"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sexoStr);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        if (usuario.getSexo().equals("Masculino")) {
+            spinner.setSelection(0);
         } else {
-            return false;
+            spinner.setSelection(1);
         }
     }
 
-    public boolean updatePassword() {
-        try {
-            user = FirebaseAuth.getInstance().getCurrentUser();
-            final String email = user.getEmail();
-            AuthCredential credential = EmailAuthProvider.getCredential(email, senhaAntiga);
-            user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        user.updatePassword(senhaNova).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    flagSenha = true;
-                                }
-                            }
-                        });
+    @Override
+    public void onClick(View v) {
+        Intent it;
+        switch (v.getId()) {
+            case R.id.bttnCancelar_editar_cadastro:
+                super.onBackPressed();
+                setResult(Activity.RESULT_CANCELED);
+                break;
+
+            case R.id.bttnSalvar_editar_cadastro:
+
+                dialog = new MaterialDialog.Builder(this).content(R.string.atualizando_cadastro).progress(true, 0).show();
+                try {
+                    if (checkNascimento == true) {
+                        usuario.setDiaNascimento(dia);
+                        usuario.setMesNascimento(mes);
+                        usuario.setAnoNascimento(ano);
                     }
+                    usuario.setNome(nomeEdit.getText().toString());
+                    usuario.setUsuario(usuarioEdit.getText().toString());
+                    usuario.setSobre(sobreMimEdit.getText().toString());
+                    usuario.setSexo(spinner.getSelectedItem().toString());
+
+                    UsuarioDAO.atualizarUsuario(usuario);
+
+                    dialog.dismiss();
+                    Intent intent = new Intent();
+                    intent.putExtra("usuario", usuario);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
+                } catch (Exception e) {
+                    dialog.dismiss();
+                    Snackbar.make(findViewById(android.R.id.content), R.string.cadastro_erro_geral, Snackbar.LENGTH_LONG).show();
                 }
-            });
-
-            return flagSenha;
-
-        } catch (Exception e) {
-            flagSenha = false;
-            return flagSenha;
         }
-    }
-
-    public boolean updateEmail() {
-        try {
-            user = FirebaseAuth.getInstance().getCurrentUser();
-            final String email = user.getEmail();
-            if (!email.equals(emailEdit.getText().toString())) {
-                AuthCredential credential = EmailAuthProvider.getCredential(email, senhaAntiga);
-                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            user.updateEmail(emailEdit.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        flagEmail = true;
-                                    }
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-            return flagEmail;
-
-        } catch (Exception e) {
-            flagEmail = false;
-            return flagEmail;
-        }
-    }
-
-    private void voltar() {
-        super.onBackPressed();
     }
 
     public static void setIsUpdating(boolean isUpdating) {
         EditarCadastro.isUpdating = isUpdating;
     }
+
+    public void showDialog() {
+        ImageButton btnData = (ImageButton) findViewById(R.id.bttnDataNascimento_cadastro);
+
+        btnData.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDialog(DialogId);
+                    }
+                }
+        );
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (id == DialogId) {
+            return new DatePickerDialog(this, dPickerListener, ano, mes, dia);
+        } else {
+            return null;
+        }
+    }
+
+    private DatePickerDialog.OnDateSetListener dPickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            checkNascimento = true;
+            ano = year;
+            mes = month + 1;
+            dia = dayOfMonth;
+
+            DataMacara data = new DataMacara();
+
+            dataTextView.setText(data.dataTransforma(dia, mes, ano));
+        }
+    };
 }

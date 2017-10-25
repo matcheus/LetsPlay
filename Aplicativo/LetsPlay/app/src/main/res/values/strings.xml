@@ -44,6 +44,8 @@
     <string name="fechar_app">Pressione o Botão Voltar novamente para fechar o Aplicativo.</string>
     <string name="not_syncronized">Dados ainda não foram sincronizados. Tente novamente em breve.</string>
     <string name="atualizando_cadastro">Atualizando cadastro. Por favor aguarde</string>
+    <string name="nenhum_dado_atualizado">Nenhum dado foi atualizado.</string>
+    <string name="diga_algo_sobre_vc">Diga algo sobre você</string>
 
 
     <string name="perfil">Perfil</string>

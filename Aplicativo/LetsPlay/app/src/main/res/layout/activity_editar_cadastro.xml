@@ -12,74 +12,151 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/ContaTitulos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:text="@string/atualizar_cadastro" />
 
+        <TextView
+            style="@style/ContaTitulos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Nome" />
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
             <EditText
                 android:id="@+id/edit_nome_editar_cadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="Nome: "
                 android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
+            style="@style/ContaTitulos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/edit_email_editar_cadastro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="E-mail: "
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:textSize="14sp" />
-        </android.support.design.widget.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Usuário" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent">
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
             <EditText
-                android:id="@+id/edit_senha_editar_cadastro_antiga"
+                android:id="@+id/edit_usuario_editar_cadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="Senha antiga: "
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:maxLines="1"
                 android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            style="@style/ContaTitulos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Sobre mim" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorAccent">
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
             <EditText
-                android:id="@+id/edit_senha_editar_cadastro_nova"
+                android:id="@+id/edit_sobre_mim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="Nova senha: "
-                android:inputType="textPassword"
-                android:maxLines="1"
                 android:textSize="14sp" />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            style="@style/ContaTitulos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Gênero" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sexo: "
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/sexo_cadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/ContaTitulos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Data de Nascimento: " />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtData_cadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txtMes_cadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txtAno_cadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="15dp" />
+
+            <ImageButton
+                android:id="@+id/bttnDataNascimento_cadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_calendario" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

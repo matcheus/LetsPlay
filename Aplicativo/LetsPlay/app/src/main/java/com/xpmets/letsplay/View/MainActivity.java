@@ -26,10 +26,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.xpmets.letsplay.DAO.UsuarioDAO;
 import com.xpmets.letsplay.Model.Usuario;
 import com.xpmets.letsplay.R;
-import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private String mUserId = mFirebaseUser.getUid();
     static private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         };
 
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             JogosPerfis jogosPerfis = new JogosPerfis();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.add(R.id.frameFragment, jogosPerfis, "jogosPerfis");
@@ -117,14 +116,13 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Itens de Navegação da Barra Lateral
         int id = item.getItemId();
 
         if (id == R.id.perfilJogos) {
             JogosPerfis jogosPerfis = new JogosPerfis();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.replace(R.id.frameFragment, jogosPerfis, "jogosPerfis");
-            //fragmentTransaction.addToBackStack("pilha");
             fragmentTransaction.commit();
         } else if (id == R.id.comunidade) {
 
@@ -153,7 +151,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     //Colocar as informações do usuario na barra lateral
-    private void infoBarraLateral(Usuario user){
+    private void infoBarraLateral(Usuario user) {
         this.usuario = user;
         TextView nomeUsuario = (TextView) findViewById(R.id.textNomeUsuario);
         TextView emailUsuario = (TextView) findViewById(R.id.textEmailUsuario);
@@ -164,7 +162,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-
         //Coletando a referencia do usuario
         UsuarioDAO user = new UsuarioDAO();
         user.getUserById(mAuthListener);
@@ -175,7 +172,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot vacSnapshot : dataSnapshot.getChildren()) {
-                    //Log.e("Vacina adicionada: ", vacSnapshot.toString());
                     Usuario use = vacSnapshot.getValue(Usuario.class);
                     infoBarraLateral(use);
                 }
@@ -185,37 +181,5 @@ public class MainActivity extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-        //Editar Cadastro
-        /*mFirebaseAuth.addAuthStateListener(mAuthListener);
-        refUsuario.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot vacSnapshot : dataSnapshot.getChildren()) {
-                    Usuario user = vacSnapshot.getValue(Usuario.class);
-                    usuario = user;
-
-                    classificaoTxt = (TextView) findViewById(R.id.classificao_carteira);
-                    nomeHeadertxt = (TextView) findViewById(R.id.username_header);
-                    emailHeadertxt = (TextView) findViewById(R.id.email_header);
-
-                    String classificacaoStr, nomeHeaderStr, emailHeaderStr;
-                    classificacaoStr = calculaClassificacao(usuario);
-                    classificaoTxt.setText(classificacaoStr);
-
-                    nomeHeaderStr = usuario.getNome();
-                    nomeHeadertxt.setText(nomeHeaderStr);
-                    nomeHeadertxt.setTextColor(ContextCompat.getColor(Carteira.this, black));
-
-                    emailHeaderStr = usuario.getEmail();
-                    emailHeadertxt.setText(emailHeaderStr);
-                    emailHeadertxt.setTextColor(ContextCompat.getColor(Carteira.this, black));
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
     }
 }

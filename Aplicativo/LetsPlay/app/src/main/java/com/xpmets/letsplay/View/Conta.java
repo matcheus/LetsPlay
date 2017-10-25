@@ -1,5 +1,7 @@
 package com.xpmets.letsplay.View;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +18,7 @@ public class Conta extends AppCompatActivity {
 
     private Usuario usuario;
     private TextView nome, user, email, data, sexo, sobreMim;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +33,14 @@ public class Conta extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(Conta.this, EditarCadastro.class);
+                intent.putExtra("usuario", usuario);
+                startActivityForResult(intent, 1);
             }
         });
     }
 
-    private void preencherInfo(Usuario usua){
+    private void preencherInfo(Usuario usua) {
         nome = (TextView) findViewById(R.id.text_nome_conta);
         nome.setText(usua.getNome());
         user = (TextView) findViewById(R.id.text_usuario_conta);
@@ -50,8 +54,29 @@ public class Conta extends AppCompatActivity {
         sexo = (TextView) findViewById(R.id.text_genero_conta);
         sexo.setText(usua.getSexo());
         sobreMim = (TextView) findViewById(R.id.text_sobre_conta);
-        if (!usua.getSobre().equals("")){
+        if (!usua.getSobre().equals("")) {
             sobreMim.setText(usua.getSobre());
+        } else {
+            sobreMim.setHint(R.string.diga_algo_sobre_vc);
+            sobreMim.setText("");
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                usuario = (Usuario) data.getSerializableExtra("usuario");
+                preencherInfo(usuario);
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                Snackbar.make(findViewById(android.R.id.content), R.string.nenhum_dado_atualizado, Snackbar.LENGTH_LONG).show();
+            }
         }
     }
 }

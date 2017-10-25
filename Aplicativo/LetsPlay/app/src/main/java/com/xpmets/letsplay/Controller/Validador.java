@@ -6,6 +6,7 @@ import android.widget.EditText;
 
 import com.xpmets.letsplay.R;
 import com.xpmets.letsplay.View.Cadastro;
+import com.xpmets.letsplay.View.EditarCadastro;
 
 
 /**
