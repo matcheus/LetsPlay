@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity
             JogosPerfis jogosPerfis = new JogosPerfis();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.add(R.id.frameFragment, jogosPerfis, "jogosPerfis");
+            fragmentTransaction.addToBackStack("das");
             fragmentTransaction.commit();
         }
 
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity
             JogosPerfis jogosPerfis = new JogosPerfis();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.replace(R.id.frameFragment, jogosPerfis, "jogosPerfis");
+            fragmentTransaction.addToBackStack("das");
             fragmentTransaction.commit();
         } else if (id == R.id.comunidade) {
 
