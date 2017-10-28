@@ -1,121 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_height="90dp"
+    android:layout_margin="8dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="5dp"
     tools:context="com.xpmets.letsplay.View.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/fragment_jogos_perfil">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        card_view:cardCornerRadius="8dp"
-        card_view:cardElevation="5dp">
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@drawable/game_sem_imagem" />
+
+        <LinearLayout
+            android:id="@+id/relative"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:paddingBottom="5dp">
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView2"
                 style="@style/NomeJogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="JOGO 1"
-                app:layout_constraintLeft_toRightOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                android:layout_alignLeft="@id/linear_botoes"
+                android:text="JOGO 1" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/game_sem_imagem" />
+            <LinearLayout
+                android:id="@+id/linear_botoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button"
-                style="@style/DiasFontOff"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Seg"
-                app:layout_constraintLeft_toRightOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <Button
+                    android:id="@+id/button"
+                    style="@style/DiasFontOff"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Seg" />
 
-            <Button
-                android:id="@+id/button2"
-                style="@style/DiasFontOn"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Ter"
-                app:layout_constraintLeft_toRightOf="@+id/button"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <Button
+                    android:id="@+id/button2"
+                    style="@style/DiasFontOn"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Ter" />
 
-            <Button
-                android:id="@+id/button3"
-                style="@style/DiasFontOff"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Qua"
-                app:layout_constraintLeft_toRightOf="@+id/button2"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <Button
+                    android:id="@+id/button3"
+                    style="@style/DiasFontOff"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Qua" />
 
-            <Button
-                android:id="@+id/button4"
-                style="@style/DiasFontOn"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Qui"
-                app:layout_constraintLeft_toRightOf="@+id/button3"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/DiasFontOn"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Qui" />
 
-            <Button
-                android:id="@+id/button5"
-                style="@style/DiasFontOn"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Sex"
-                app:layout_constraintLeft_toRightOf="@+id/button4"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <Button
+                    android:id="@+id/button5"
+                    style="@style/DiasFontOn"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Sex" />
 
-            <Button
-                android:id="@+id/button6"
-                style="@style/DiasFontOff"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Sab"
-                app:layout_constraintLeft_toRightOf="@+id/button5"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <Button
+                    android:id="@+id/button6"
+                    style="@style/DiasFontOff"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Sab" />
 
-            <Button
-                android:id="@+id/button7"
-                style="@style/DiasFontOn"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="8dp"
-                android:clickable="false"
-                android:text="Dom"
-                app:layout_constraintLeft_toRightOf="@+id/button6"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+                <Button
+                    android:id="@+id/button7"
+                    style="@style/DiasFontOn"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="false"
+                    android:text="Dom" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

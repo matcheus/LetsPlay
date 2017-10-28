@@ -16,7 +16,7 @@ public class JogosPerfis extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState){
-        View view = inflater.inflate(R.layout.app_bar_main, null);
+        View view = inflater.inflate(R.layout.fragment_jogos_perfil, null);
 
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
