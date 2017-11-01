@@ -16,7 +16,7 @@ public class Usuario implements Serializable {
     private String senha;
     private String sobre = "";
     private int diaNascimento, mesNascimento, anoNascimento;
-    private ArrayList<Perfil> perfis;
+    private ArrayList<Perfil> perfis = new ArrayList<>();
     private static FirebaseUser currentFirebaseUser;
 
     public Usuario() {
@@ -128,6 +128,10 @@ public class Usuario implements Serializable {
 
     public static void setCurrentFirebaseUser(FirebaseUser currentFirebaseUser) {
         Usuario.currentFirebaseUser = currentFirebaseUser;
+    }
+
+    public void adicionarJogoPerfil(Perfil perfil){
+        this.perfis.add(perfil);
     }
 
     public static String getmUserId() {

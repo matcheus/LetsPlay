@@ -35,12 +35,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/nome_jogo"
                 style="@style/NomeJogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@id/linear_botoes"
-                android:text="JOGO 1" />
+                android:text="@null" />
 
             <LinearLayout
                 android:id="@+id/linear_botoes"

@@ -24,30 +24,31 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".View.MainActivity"/>
+                android:value=".View.MainActivity" />
         </activity>
         <activity
             android:name=".View.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".View.Cadastro"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".View.Conta"
             android:label="Minha conta"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".View.MainActivity"/>
+                android:value=".View.MainActivity" />
         </activity>
         <activity
-        android:name=".View.EditarCadastro"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
+            android:name=".View.EditarCadastro"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".View.AdicionarJogoPerfil"
+            android:label="Cadastrar jogo"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
     </application>
 

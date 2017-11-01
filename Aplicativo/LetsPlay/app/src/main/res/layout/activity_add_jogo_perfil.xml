@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xpmets.letsplay.View.AdicionarJogoPerfil">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:paddingBottom="75dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Preencha os dados para realizar o cadastro do jogo:"
+            android:textColor="#000000" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_nome_jogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="Nome do jogo"
+                android:inputType="textAutoComplete"
+                android:maxLines="1"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_descricao_jogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="Coloque uma descrição (Opcional)"
+                android:inputType="textLongMessage"
+                android:textSize="14sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_segunda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaosegunda"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Seg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                style="@style/EditTextHorarios"
+                android:onClick="horarioSegunda" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                style="@style/EditTextHorarios"
+                android:onClick="horarioSegunda" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_terca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaoterca"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Ter" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaoquarta"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Qua" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaoquinta"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Qui" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaosexta"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Sex" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText style="@style/EditTextHorarios" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaosabado"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Sab" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                style="@style/EditTextHorarios"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                style="@style/EditTextHorarios"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botaodomingo"
+                style="@style/DiasFontOff"
+                android:layout_width="44dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:text="Dom" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="De"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                style="@style/EditTextHorarios"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="Até"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                style="@style/EditTextHorarios"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bttnCancelar_cadastro_jogo"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Cancelar" />
+
+            <Button
+                android:id="@+id/bttnFinalizar_cadastro_jogo"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="Concluir" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -55,7 +55,7 @@
     <string name="bttn_cancelar">Cancelar</string>
     <string name="bttn_concluir">Concluir</string>
     <string name="bttn_voltar">Voltar</string>
-    <string name="doses_card">Doses:</string>
+    <string name="perfil_vazio">O seu perfil de jogos está vazio.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
