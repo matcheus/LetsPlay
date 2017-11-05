@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="16dp"
-        android:paddingBottom="75dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="75dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -73,6 +73,7 @@
                 android:textSize="18dp" />
 
             <EditText
+                android:id="@+id/edit_hora_segunda_inicial"
                 style="@style/EditTextHorarios"
                 android:onClick="horarioSegunda" />
 
@@ -86,6 +87,7 @@
                 android:textSize="18dp" />
 
             <EditText
+                android:id="@+id/edit_hora_segunda_final"
                 style="@style/EditTextHorarios"
                 android:onClick="horarioSegunda" />
 
@@ -114,7 +116,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_terca_inicial"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioTerca"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,7 +130,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_terca_final"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioTerca"/>
 
         </LinearLayout>
 
@@ -151,7 +159,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_quarta_inicial"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioQuarta"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -162,7 +173,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_quarta_final"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioQuarta"/>
 
         </LinearLayout>
 
@@ -188,7 +202,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_quinta_inicial"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioQuinta"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -199,7 +216,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_quinta_final"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioQuinta"/>
 
         </LinearLayout>
 
@@ -225,7 +245,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_sexta_inicial"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioSexta"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -236,7 +259,10 @@
                 android:textColor="#000000"
                 android:textSize="18dp" />
 
-            <EditText style="@style/EditTextHorarios" />
+            <EditText
+                android:id="@+id/edit_hora_sexta_final"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioSexta"/>
 
         </LinearLayout>
 
@@ -263,7 +289,9 @@
                 android:textSize="18dp" />
 
             <EditText
-                style="@style/EditTextHorarios"/>
+                android:id="@+id/edit_hora_sabado_inicial"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioSabado"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -275,7 +303,9 @@
                 android:textSize="18dp" />
 
             <EditText
-                style="@style/EditTextHorarios"/>
+                android:id="@+id/edit_hora_sabado_final"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioSabado"/>
 
         </LinearLayout>
 
@@ -302,7 +332,9 @@
                 android:textSize="18dp" />
 
             <EditText
-                style="@style/EditTextHorarios"/>
+                android:id="@+id/edit_hora_domingo_inicial"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioDomingo"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -314,7 +346,9 @@
                 android:textSize="18dp" />
 
             <EditText
-                style="@style/EditTextHorarios"/>
+                android:id="@+id/edit_hora_domingo_final"
+                style="@style/EditTextHorarios"
+                android:onClick="horarioDomingo"/>
 
         </LinearLayout>
 

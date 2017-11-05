@@ -23,7 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.xpmets.letsplay.DAO.UsuarioDAO;
 import com.xpmets.letsplay.Model.Usuario;
 import com.xpmets.letsplay.R;
 
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity
                 FirebaseUser user = firebaseAuth.getCurrentUser();
             }
         };
-
 
         if (savedInstanceState == null) {
             JogosPerfis jogosPerfis = new JogosPerfis();
@@ -123,7 +121,6 @@ public class MainActivity extends AppCompatActivity
             JogosPerfis jogosPerfis = new JogosPerfis();
             FragmentTransaction fragmentTransaction = fm.beginTransaction();
             fragmentTransaction.replace(R.id.frameFragment, jogosPerfis, "jogosPerfis");
-            fragmentTransaction.addToBackStack("das");
             fragmentTransaction.commit();
         } else if (id == R.id.comunidade) {
 
@@ -153,19 +150,19 @@ public class MainActivity extends AppCompatActivity
 
     //Colocar as informações do usuario na barra lateral
     private void infoBarraLateral(Usuario user) {
-        this.usuario = user;
         TextView nomeUsuario = findViewById(R.id.textNomeUsuario);
         TextView emailUsuario = findViewById(R.id.textEmailUsuario);
         nomeUsuario.setText(user.getNome());
         emailUsuario.setText(user.getEmail());
+        JogosPerfis jogosPerfis = new JogosPerfis();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.frameFragment, jogosPerfis, "jogosPerfis");
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //Coletando a referencia do usuario
-        UsuarioDAO user = new UsuarioDAO();
-        user.getUserById(mAuthListener);
 
         //Recuperando dados do Firebase
         mFirebaseAuth.addAuthStateListener(mAuthListener);
@@ -174,7 +171,8 @@ public class MainActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot vacSnapshot : dataSnapshot.getChildren()) {
                     Usuario use = vacSnapshot.getValue(Usuario.class);
-                    infoBarraLateral(use);
+                    usuario = use;
+                    infoBarraLateral(usuario);
                 }
             }
 
@@ -182,5 +180,10 @@ public class MainActivity extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
     }
 }

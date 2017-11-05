@@ -19,14 +19,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.xpmets.letsplay.DAO.LoginOfflineDAO;
 import com.xpmets.letsplay.DAO.UsuarioDAO;
 import com.xpmets.letsplay.Model.Usuario;
 import com.xpmets.letsplay.R;
-
-/**
- * Created by Matheus on 19/10/2017.
- */
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,9 +36,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     MaterialDialog dialog;
     CompoundButton checkBox;
     private FirebaseAuth mFirebaseAuth;
-    FirebaseUser user;
+    FirebaseUser userFire;
     private FirebaseAuth mAuth;
     static private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private Usuario userG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         // Iniciando o FirebaseAuth
         try {
             mFirebaseAuth = FirebaseAuth.getInstance();
-            user = Usuario.getFireBaseUser();
+            userFire = Usuario.getFireBaseUser();
         } catch (Exception e) {
             mFirebaseAuth = null;
         }
@@ -140,6 +143,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     SharedPreferences prefs = getSharedPreferences("login", MODE_PRIVATE);
                                     if (LoginOfflineDAO.validarLoginOffline(prefs, emailEditText, passwordEditText)) {
                                         LoginOfflineDAO.persistirLogin(prefs, emailEditText, passwordEditText, checkBox);
+
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -161,5 +165,4 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     }
                 });
     }
-
 }

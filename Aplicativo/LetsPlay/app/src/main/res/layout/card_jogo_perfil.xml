@@ -11,8 +11,7 @@
     android:layout_marginTop="10dp"
     card_view:cardCornerRadius="8dp"
     card_view:cardElevation="5dp"
-    tools:context="com.xpmets.letsplay.View.MainActivity"
-    tools:showIn="@layout/fragment_jogos_perfil">
+    tools:context="com.xpmets.letsplay.View.MainActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -50,22 +49,22 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/segunda"
                     style="@style/DiasFontOff"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
                     android:text="Seg" />
 
                 <Button
-                    android:id="@+id/button2"
-                    style="@style/DiasFontOn"
+                    android:id="@+id/terca"
+                    style="@style/DiasFontOff"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
                     android:text="Ter" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/quarta"
                     style="@style/DiasFontOff"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
@@ -73,23 +72,23 @@
                     android:text="Qua" />
 
                 <Button
-                    android:id="@+id/button4"
-                    style="@style/DiasFontOn"
+                    android:id="@+id/quinta"
+                    style="@style/DiasFontOff"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
                     android:text="Qui" />
 
                 <Button
-                    android:id="@+id/button5"
-                    style="@style/DiasFontOn"
+                    android:id="@+id/sexta"
+                    style="@style/DiasFontOff"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
                     android:clickable="false"
                     android:text="Sex" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/sabado"
                     style="@style/DiasFontOff"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
@@ -97,8 +96,8 @@
                     android:text="Sab" />
 
                 <Button
-                    android:id="@+id/button7"
-                    style="@style/DiasFontOn"
+                    android:id="@+id/domingo"
+                    style="@style/DiasFontOff"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="8dp"
                     android:clickable="false"

@@ -43,4 +43,16 @@ public class Perfil implements Serializable{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public ArrayList<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(ArrayList<Horario> horarios) {
+        this.horarios = horarios;
+    }
+
+    public void addHorariio(Horario horario){
+        this.horarios.add(horario);
+    }
 }

@@ -1,13 +1,43 @@
 package com.xpmets.letsplay.Model;
 
-/**
- * Created by Matheus on 06/10/2017.
- */
+import java.io.Serializable;
 
-public class Horario {
+public class Horario implements Serializable{
 
-    public enum Dia {DOMINGO, SEGUNDA, TERÇA, QUARTA, QUINTA, SEXTA, SABADO};
-    private String horas;
-    private Dia dias;
+    private String dia;
+    private String horaInical, horaFinal;
 
+    public Horario() {
+
+    }
+
+    public Horario(String dia, String horaInical, String horaFinal) {
+        this.dia = dia;
+        this.horaInical = horaInical;
+        this.horaFinal = horaFinal;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public String getHoraInical() {
+        return horaInical;
+    }
+
+    public void setHoraInical(String horaInical) {
+        this.horaInical = horaInical;
+    }
+
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+
+    public void setHoraFinal(String horaFinal) {
+        this.horaFinal = horaFinal;
+    }
 }

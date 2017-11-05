@@ -105,7 +105,6 @@ public class EditarCadastro extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        Intent it;
         switch (v.getId()) {
             case R.id.bttnCancelar_editar_cadastro:
                 super.onBackPressed();

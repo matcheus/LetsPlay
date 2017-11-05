@@ -1,14 +1,17 @@
 package com.xpmets.letsplay.Controller;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.xpmets.letsplay.Model.Horario;
 import com.xpmets.letsplay.Model.Perfil;
 import com.xpmets.letsplay.R;
 import com.xpmets.letsplay.View.JogoPerfilDetalhado;
@@ -21,22 +24,40 @@ public class PerfilJogosAdapter extends RecyclerView.Adapter<PerfilJogosAdapter.
 
     List<Perfil> perfilJogos;
     static private List<Perfil> perfilJogosG = new ArrayList<>();
+    private Context context;
 
-    public PerfilJogosAdapter(List<Perfil> vacinas) {
+    public PerfilJogosAdapter(List<Perfil> jogosPerfil, Context context) {
+        this.context = context;
         this.perfilJogos = new ArrayList<>();
-        this.perfilJogos = vacinas;
-        perfilJogosG = vacinas;
+        this.perfilJogos = jogosPerfil;
+        perfilJogosG = jogosPerfil;
+    }
+
+    //inicializa a viewHolder (cardView)
+    @Override
+    public VacinaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_jogo_perfil, parent, false);
+        VacinaViewHolder vacinaView = new VacinaViewHolder(v);
+        return vacinaView;
     }
 
     public static class VacinaViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView nome_jogo;
-        TextView dose_vacina;
+        Button segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
         VacinaViewHolder(final View itemView) {
             super(itemView);
             cv = itemView.findViewById(R.id.card_view);
             nome_jogo = itemView.findViewById(R.id.nome_jogo);
+            segunda = itemView.findViewById(R.id.segunda);
+            terca = itemView.findViewById(R.id.terca);
+            quarta = itemView.findViewById(R.id.quarta);
+            quinta = itemView.findViewById(R.id.quinta);
+            sexta = itemView.findViewById(R.id.sexta);
+            sabado = itemView.findViewById(R.id.sabado);
+            domingo = itemView.findViewById(R.id.domingo);
 
             //card abre a informação do perfil do jogo
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -52,20 +73,35 @@ public class PerfilJogosAdapter extends RecyclerView.Adapter<PerfilJogosAdapter.
         }
     }
 
-    //inicializa a viewHolder (cardView)
-    @Override
-    public VacinaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_jogo_perfil, parent, false);
-        VacinaViewHolder vacinaView = new VacinaViewHolder(v);
-        return vacinaView;
-    }
-
     //adiciona valores aos itens da view
     @Override
     public void onBindViewHolder(VacinaViewHolder holder, int position) {
         holder.nome_jogo.setText(perfilJogos.get(position).getNomeJogo());
-        //holder.dose_vacina.setText(perfilJogos.get(position).getDosesTomadas() + "/" + perfilJogos.get(position).getQuantidadeDoses());
+        for (int i = 0; i < perfilJogos.get(position).getHorarios().size(); i++) {
+            Horario horario = perfilJogos.get(position).getHorarios().get(i);
+            if (horario.getDia().equals("Seg")) {
+                holder.segunda.setBackgroundResource(R.drawable.round_button);
+                holder.segunda.setTextAppearance(context, R.style.DiasFontOn);
+            } else if (horario.getDia().equals("Ter")) {
+                holder.terca.setBackgroundResource(R.drawable.round_button);
+                holder.terca.setTextAppearance(context, R.style.DiasFontOn);
+            } else if (horario.getDia().equals("Qua")) {
+                holder.quarta.setBackgroundResource(R.drawable.round_button);
+                holder.quarta.setTextAppearance(context, R.style.DiasFontOn);
+            } else if (horario.getDia().equals("Qui")) {
+                holder.quinta.setBackgroundResource(R.drawable.round_button);
+                holder.quinta.setTextAppearance(context, R.style.DiasFontOn);
+            } else if (horario.getDia().equals("Sex")) {
+                holder.sexta.setBackgroundResource(R.drawable.round_button);
+                holder.sexta.setTextAppearance(context, R.style.DiasFontOn);
+            } else if (horario.getDia().equals("Sab")) {
+                holder.sabado.setBackgroundResource(R.drawable.round_button);
+                holder.sabado.setTextAppearance(context, R.style.DiasFontOn);
+            } else if (horario.getDia().equals("Dom")) {
+                holder.domingo.setBackgroundResource(R.drawable.round_button);
+                holder.domingo.setTextAppearance(context, R.style.DiasFontOn);
+            }
+        }
     }
 
     @Override
