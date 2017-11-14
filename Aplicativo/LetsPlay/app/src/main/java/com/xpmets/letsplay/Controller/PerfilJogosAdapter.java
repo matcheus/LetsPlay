@@ -20,7 +20,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PerfilJogosAdapter extends RecyclerView.Adapter<PerfilJogosAdapter.VacinaViewHolder> implements Serializable {
+public class PerfilJogosAdapter extends RecyclerView.Adapter<PerfilJogosAdapter.PerfilViewHolder> implements Serializable {
 
     List<Perfil> perfilJogos;
     static private List<Perfil> perfilJogosG = new ArrayList<>();
@@ -35,19 +35,19 @@ public class PerfilJogosAdapter extends RecyclerView.Adapter<PerfilJogosAdapter.
 
     //inicializa a viewHolder (cardView)
     @Override
-    public VacinaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PerfilViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_jogo_perfil, parent, false);
-        VacinaViewHolder vacinaView = new VacinaViewHolder(v);
+        PerfilViewHolder vacinaView = new PerfilViewHolder(v);
         return vacinaView;
     }
 
-    public static class VacinaViewHolder extends RecyclerView.ViewHolder {
+    public static class PerfilViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView nome_jogo;
         Button segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
-        VacinaViewHolder(final View itemView) {
+        PerfilViewHolder(final View itemView) {
             super(itemView);
             cv = itemView.findViewById(R.id.card_view);
             nome_jogo = itemView.findViewById(R.id.nome_jogo);
@@ -75,7 +75,7 @@ public class PerfilJogosAdapter extends RecyclerView.Adapter<PerfilJogosAdapter.
 
     //adiciona valores aos itens da view
     @Override
-    public void onBindViewHolder(VacinaViewHolder holder, int position) {
+    public void onBindViewHolder(PerfilViewHolder holder, int position) {
         holder.nome_jogo.setText(perfilJogos.get(position).getNomeJogo());
         for (int i = 0; i < perfilJogos.get(position).getHorarios().size(); i++) {
             Horario horario = perfilJogos.get(position).getHorarios().get(i);

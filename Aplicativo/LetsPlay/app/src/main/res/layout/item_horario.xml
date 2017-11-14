@@ -5,20 +5,19 @@
     android:orientation="horizontal">
 
     <Button
-        android:id="@+id/botaosegunda"
-        style="@style/DiasFontOff"
+        android:id="@+id/botao_dia"
+        style="@style/DiasFontOn"
         android:layout_width="44dp"
-        android:layout_height="42dp"
+        android:layout_height="44dp"
         android:layout_marginTop="16dp"
-        android:text="Seg" />
+        android:text="" />
 
     <TextView
-        android:id="@+id/textClock"
+        android:id="@+id/text_horario_inicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="00:00 AM"
         android:textColor="#000000" />
 
     <TextView
@@ -30,38 +29,12 @@
         android:textColor="#000000" />
 
     <TextView
-        android:id="@+id/textClock2"
+        android:id="@+id/text_horario_final"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="16dp"
-        android:text="00:00 PM"
         android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/textClock3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="00:00 AM"
-        android:textColor="#000000" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="16dp"
-        android:text="-"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/textClock4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="16dp"
-        android:text="00:00 PM"
-        android:textColor="#000000" />
 
 </LinearLayout>
