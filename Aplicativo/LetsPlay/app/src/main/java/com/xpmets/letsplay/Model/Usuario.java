@@ -17,6 +17,7 @@ public class Usuario implements Serializable {
     private String sobre = "";
     private int diaNascimento, mesNascimento, anoNascimento;
     private ArrayList<Perfil> perfis = new ArrayList<>();
+    private ArrayList<String> amigosId = new ArrayList<>();
     private static FirebaseUser currentFirebaseUser;
 
     public Usuario() {
@@ -120,6 +121,14 @@ public class Usuario implements Serializable {
 
     public void setPerfis(ArrayList<Perfil> perfis) {
         this.perfis = perfis;
+    }
+
+    public ArrayList<String> getAmigosId() {
+        return amigosId;
+    }
+
+    public void setAmigosId(ArrayList<String> amigosId) {
+        this.amigosId = amigosId;
     }
 
     public static FirebaseUser getCurrentFirebaseUser() {

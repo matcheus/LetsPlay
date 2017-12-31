@@ -125,7 +125,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.comunidade) {
 
         } else if (id == R.id.amigos) {
-
+            Amigos amigos = new Amigos();
+            FragmentTransaction fragmentTransaction = fm.beginTransaction();
+            fragmentTransaction.replace(R.id.frameFragment, amigos, "amigos");
+            fragmentTransaction.commit();
         } else if (id == R.id.conversas) {
 
         } else if (id == R.id.conta) {
@@ -183,7 +186,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
     }
 }

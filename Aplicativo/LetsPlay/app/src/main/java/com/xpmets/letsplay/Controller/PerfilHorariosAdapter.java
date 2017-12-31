@@ -17,17 +17,13 @@ import java.util.List;
 public class PerfilHorariosAdapter extends RecyclerView.Adapter<PerfilHorariosAdapter.HorarioViewHolder>{
 
     List<Horario> horarios;
-    static private List<Horario> horariosG = new ArrayList<>();
-    private Context context;
 
     public PerfilHorariosAdapter(List<Horario> horarios, Context context) {
-        this.context = context;
         this.horarios = new ArrayList<>();
         this.horarios = horarios;
-        horariosG = horarios;
     }
 
-    //inicializa a viewHolder (cardView)
+    //inicializa a viewHolder
     @Override
     public HorarioViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
